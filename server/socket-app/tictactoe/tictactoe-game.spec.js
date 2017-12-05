@@ -125,7 +125,7 @@ fdescribe('join game command', function () {
 
     });
 
-    fit('should emit FullGameJoinAttempted event when game full..implement this', function () {
+    it('should emit FullGameJoinAttempted event when game full..implement this', function () {
 
         given = [
             {
