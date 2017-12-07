@@ -3,11 +3,11 @@ node {
     stage('Build') {
         echo 'Building..'
         sh 'npm install'
-        sh 'npm run installclient'
+        //sh 'npm run installclient'
     }
     stage('Test') {
         echo 'Testing..'
-        sh 'npm tests'
+        sh 'npm run tests'
     }
     stage('Deploy') {
         echo 'Deploying....'
