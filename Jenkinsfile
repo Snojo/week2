@@ -3,8 +3,8 @@ node {
     stage('Build') {
         echo 'Building..'
         //sh 'yarn install'
-        
-        sh 'npm install'
+        sh 'npm cache clean -f'
+        sh 'sudo npm install'
         sh 'npm update'
         //sh 'npm run installclient'
     }
