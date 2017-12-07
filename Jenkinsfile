@@ -23,9 +23,11 @@ node {
        // sh 'npm run build'
        // sh 'npm run buildclient'
         //sh 'export GIT_COMMIT= <git hash used to tag your container>'
-        sh 'cd ./provisioning'
-        sh 'pwd'
-        sh './provision-new-environment.sh'
-        sh 'pwd'
+        sh './provisioning/create-aws-docker-host-instance.sh'
+        sh './provisioniing/update-env.sh ${INSTANCE_PUBLIC_NAME}
+'
+       // sh 'pwd'
+       // sh './provision-new-environment.sh'
+       // sh 'pwd'
     }
 }
