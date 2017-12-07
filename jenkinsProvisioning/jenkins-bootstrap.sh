@@ -14,8 +14,15 @@ sudo yum -y install java-1.8.0
 sudo yum -y install git
 #sudo yum -y install pip
 
+sudo yum install -y nodejs npm --enablerepo=epel
+
 #NVM
-#sudo curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+sudo curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+
+nvm install 6.9.1
+nvm use 6.9.1
+
+sudo npm install -g yarn
 
 
 sudo yum -y install docker
