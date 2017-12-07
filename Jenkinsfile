@@ -23,8 +23,10 @@ node {
        // sh 'npm run build'
        // sh 'npm run buildclient'
         //sh 'export GIT_COMMIT= <git hash used to tag your container>'
-
+        sh 'pwd'
         sh 'cd provisioning'
+        sh 'pwd'
         sh './provision-new-environment.sh'
+        sh 'pwd'
     }
 }
