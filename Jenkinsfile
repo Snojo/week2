@@ -16,7 +16,7 @@ node {
     stage('Test') {
         echo 'Testing..'
         sh 'npm run test'
-        sh 'cd ./client && npm run test'
+        //sh 'cd ./client && npm run test'
         sh 'npm run apitest'
         sh 'npm run loadtest'
     }
