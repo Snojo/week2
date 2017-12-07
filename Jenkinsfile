@@ -2,6 +2,7 @@ node {
     checkout scm
     stage('Build') {
         echo 'Building..'
+        sh 'node --version'
         //sh 'yarn install'
        // sh 'npm cache clean -f'
         sh 'npm install'
