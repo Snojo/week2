@@ -5,6 +5,7 @@ node {
         //sh 'yarn install'
         
         sh 'npm install'
+        sh 'npm update'
         //sh 'npm run installclient'
     }
     stage('Test') {
