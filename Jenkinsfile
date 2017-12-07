@@ -20,8 +20,8 @@ node {
     stage('Build and Deploy') {
         echo 'Deploying....'
         sh './dockerbuild.sh'
-        sh 'npm run build'
-        sh 'npm run buildclient'
+       // sh 'npm run build'
+       // sh 'npm run buildclient'
         //sh 'export GIT_COMMIT= <git hash used to tag your container>'
 
         sh 'cd provision'
