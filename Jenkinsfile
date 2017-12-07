@@ -10,7 +10,8 @@ node {
         sh 'npm install -g create-react-app'
         sh 'npm cache clean -f'
         //sh 'npm install'
-        sh 'cd ./client && npm install -dd'
+        sh 'cd ./client && npm install -d'
+        sh 'npm cache clean -f'
     }
     stage('Test') {
         echo 'Testing..'
