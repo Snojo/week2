@@ -2,6 +2,7 @@
 
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
+sudo yum -y install nodejs npm --enablerepo=epel
 sudo yum -y update
 sudo yum -y install docker
 sudo pip install docker-compose

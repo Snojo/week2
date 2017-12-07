@@ -13,6 +13,10 @@ sudo yum -y install java-1.8.0
 sudo yum -y install git
 sudo yum -y install pip
 
+#NVM
+sudo curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+
+
 sudo yum -y install docker
 
 sudo service docker start
@@ -24,5 +28,10 @@ sudo usermod -a -G docker jenkins
 sudo service jenkins start
 sudo pip install docker-compose
 docker login --username=$DOCKER_USER --password=$DOCKER_PASS
+
+sudo npm install -g nodemon
+sudo npm install -g create-react-app
+nvm install 6.9.1
+nvm use 6.9.1
 
 touch ec2-init-done.markerfile
