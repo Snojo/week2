@@ -1,0 +1,119 @@
+Loaded plugins: priorities, update-motd, upgrade-helper
+Resolving Dependencies
+--> Running transaction check
+---> Package amazon-ssm-agent.x86_64 0:2.2.45.0-1.amzn1 will be updated
+---> Package amazon-ssm-agent.x86_64 0:2.2.120.0-1.amzn1 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch       Version                 Repository        Size
+================================================================================
+Updating:
+ amazon-ssm-agent     x86_64     2.2.120.0-1.amzn1       amzn-updates      11 M
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 11 M
+Is this ok [y/d/N]: Exiting on user command
+Your transaction was saved, rerun it with:
+ yum load-transaction /tmp/yum_save_tx.2017-12-07.12-40.8gAtzo.yumtx
+--2017-12-07 12:40:42--  http://pkg.jenkins.io/redhat/jenkins.repo
+Resolving pkg.jenkins.io (pkg.jenkins.io)... 52.202.51.185
+Connecting to pkg.jenkins.io (pkg.jenkins.io)|52.202.51.185|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 71
+Saving to: ‘/etc/yum.repos.d/jenkins.repo’
+
+     0K                                                       100% 19.3M=0s
+
+2017-12-07 12:40:42 (19.3 MB/s) - ‘/etc/yum.repos.d/jenkins.repo’ saved [71/71]
+
+Loaded plugins: priorities, update-motd, upgrade-helper
+Resolving Dependencies
+--> Running transaction check
+---> Package java-1.7.0-openjdk.x86_64 1:1.7.0.151-2.6.11.0.74.amzn1 will be erased
+--> Processing Dependency: jre >= 1.6.0 for package: aws-apitools-mon-1.0.20.0-1.0.amzn1.noarch
+--> Processing Dependency: jre >= 1.6.0 for package: aws-apitools-elb-1.0.35.0-1.0.amzn1.noarch
+--> Processing Dependency: jre >= 1.6.0 for package: aws-apitools-common-1.1.0-1.9.amzn1.noarch
+--> Processing Dependency: jre >= 1.6.0 for package: aws-apitools-ec2-1.7.3.0-1.0.amzn1.noarch
+--> Processing Dependency: jre >= 1.6.0 for package: aws-apitools-as-1.0.61.6-1.0.amzn1.noarch
+--> Running transaction check
+---> Package aws-apitools-as.noarch 0:1.0.61.6-1.0.amzn1 will be erased
+---> Package aws-apitools-common.noarch 0:1.1.0-1.9.amzn1 will be erased
+---> Package aws-apitools-ec2.noarch 0:1.7.3.0-1.0.amzn1 will be erased
+---> Package aws-apitools-elb.noarch 0:1.0.35.0-1.0.amzn1 will be erased
+---> Package aws-apitools-mon.noarch 0:1.0.20.0-1.0.amzn1 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch    Version                          Repository  Size
+================================================================================
+Removing:
+ java-1.7.0-openjdk   x86_64  1:1.7.0.151-2.6.11.0.74.amzn1    installed   91 M
+Removing for dependencies:
+ aws-apitools-as      noarch  1.0.61.6-1.0.amzn1               installed  7.1 M
+ aws-apitools-common  noarch  1.1.0-1.9.amzn1                  installed  915  
+ aws-apitools-ec2     noarch  1.7.3.0-1.0.amzn1                installed   17 M
+ aws-apitools-elb     noarch  1.0.35.0-1.0.amzn1               installed  7.8 M
+ aws-apitools-mon     noarch  1.0.20.0-1.0.amzn1               installed  6.9 M
+
+Transaction Summary
+================================================================================
+Remove  1 Package (+5 Dependent packages)
+
+Installed size: 130 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Erasing    : aws-apitools-mon-1.0.20.0-1.0.amzn1.noarch                   1/6 
+  Erasing    : aws-apitools-as-1.0.61.6-1.0.amzn1.noarch                    2/6 
+  Erasing    : aws-apitools-elb-1.0.35.0-1.0.amzn1.noarch                   3/6 
+  Erasing    : aws-apitools-ec2-1.7.3.0-1.0.amzn1.noarch                    4/6 
+  Erasing    : aws-apitools-common-1.1.0-1.9.amzn1.noarch                   5/6 
+  Erasing    : 1:java-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64      6/6 
+  Verifying  : 1:java-1.7.0-openjdk-1.7.0.151-2.6.11.0.74.amzn1.x86_64      1/6 
+  Verifying  : aws-apitools-common-1.1.0-1.9.amzn1.noarch                   2/6 
+  Verifying  : aws-apitools-ec2-1.7.3.0-1.0.amzn1.noarch                    3/6 
+  Verifying  : aws-apitools-elb-1.0.35.0-1.0.amzn1.noarch                   4/6 
+  Verifying  : aws-apitools-as-1.0.61.6-1.0.amzn1.noarch                    5/6 
+  Verifying  : aws-apitools-mon-1.0.20.0-1.0.amzn1.noarch                   6/6 
+
+Removed:
+  java-1.7.0-openjdk.x86_64 1:1.7.0.151-2.6.11.0.74.amzn1                       
+
+Dependency Removed:
+  aws-apitools-as.noarch 0:1.0.61.6-1.0.amzn1                                   
+  aws-apitools-common.noarch 0:1.1.0-1.9.amzn1                                  
+  aws-apitools-ec2.noarch 0:1.7.3.0-1.0.amzn1                                   
+  aws-apitools-elb.noarch 0:1.0.35.0-1.0.amzn1                                  
+  aws-apitools-mon.noarch 0:1.0.20.0-1.0.amzn1                                  
+
+Complete!
+Loaded plugins: priorities, update-motd, upgrade-helper
+Existing lock /var/run/yum.pid: another copy is running as pid 2580.
+Another app is currently holding the yum lock; waiting for it to exit...
+  The other application is: yum
+    Memory :  30 M RSS (277 MB VSZ)
+    Started: Thu Dec  7 12:40:43 2017 - 00:01 ago
+    State  : Running, pid: 2580
+Resolving Dependencies
+--> Running transaction check
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.151-1.b12.35.amzn1 will be installed
+--> Processing Dependency: java-1.8.0-openjdk-headless(x86-64) = 1:1.8.0.151-1.b12.35.amzn1 for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjvm.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjli.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjava.so(SUNWprivate_1.1)(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjvm.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjli.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libjava.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Processing Dependency: libawt.so()(64bit) for package: 1:java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64
+--> Running transaction check
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.151-1.b12.35.amzn1 will be installed
