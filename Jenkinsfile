@@ -4,7 +4,7 @@ node {
     // on linux / mac
     env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
     stage('Build') {
-        echo 'Building..'
+        echo 'Initializing...'
         sh 'node --version'
         sh 'yarn install'
        // sh 'npm cache clean -f'
@@ -17,7 +17,14 @@ node {
         sh 'npm run apitest'
         sh 'npm run loadtest'
     }
-    stage('Deploy') {
+    stage('Build and Deploy') {
         echo 'Deploying....'
+        sh './dockerbuild.sh'
+        sh 'npm run build'
+        sh 'npm run buildclient'
+        //sh 'export GIT_COMMIT= <git hash used to tag your container>'
+
+        sh 'cd provision'
+        sh './provision-new-environment.sh'
     }
 }
