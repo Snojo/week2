@@ -11,7 +11,7 @@ echo No instance information present, continuing.
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
-SECURITY_GROUP_NAME=hgop2-${USERNAME}
+SECURITY_GROUP_NAME=hgop3-${USERNAME}
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
 
@@ -32,7 +32,7 @@ else
     SECURITY_GROUP_ID=$(cat ./ec2_instance/security-group-id.txt)
 fi
 
-MY_PUBLIC_IP=$(curl http://checkip.amazonaws.com)
+MY_PUBLIC_IP=$(curl http://checkip.amazonaws.com) > ./ec2_instance/ec2_publicIP.txt
 if [ ! -e ./ec2_instance/instance-id.txt ]; then
     echo Create ec2 instance on security group ${SECURITY_GROUP_ID} ${AMI_IMAGE_ID}
     INSTANCE_INIT_SCRIPT=docker-instance-init.sh
