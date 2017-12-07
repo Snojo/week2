@@ -18,14 +18,18 @@ echo Deploy revision ${GIT_COMMIT} to http://${INSTANCE_PUBLIC_NAME}
 
 echo SCP
 
-status='unknown'
-while [ ! "${status}" == "ok" ]
-do
-    status=$(ssh -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@${INSTANCE_PUBLIC_NAME} echo ok 2>&1)
-    sleep 2
-done
+# status='unknown'
+# while [ ! "${status}" == "ok" ]
+# do
+#     echo "Let's try to connect to our new instance"
+#     status=$(ssh -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@${INSTANCE_PUBLIC_NAME} echo ok 2>&1)
+#     sleep 5
+# done
 
-echo "Status ${status}"
+# echo "Status ${status}"
+echo "Lets give our machine a few seconds to set up"
+echo "We're using the SGN: ${SECURITY_GROUP_NAME}, instance public name: ${INSTANCE_PUBLIC_NAME}"
+sleep 20
 
 
 scp -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ./ec2-instance-check.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/ec2-instance-check.sh
