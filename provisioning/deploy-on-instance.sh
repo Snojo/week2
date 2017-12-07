@@ -6,12 +6,16 @@ INSTANCE_PUBLIC_NAME=$(cat ./ec2_instance/instance-public-name.txt)
 SECURITY_GROUP_NAME=$(cat ./ec2_instance/security-group-name.txt)
 
 #Lets make sure that we can connect to our instance.
-status='unknown'
-while [ ! "${status}" == "ok" ]
-do
-   status=$(ssh -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem"  -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@${INSTANCE_PUBLIC_NAME} echo ok 2>&1)
-   sleep 2
-done
+# status='unknown'
+# while [ ! "${status}" == "ok" ]
+# do
+#    echo "Still waiting..."
+#    status=$(ssh -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem"  -o StrictHostKeyChecking=no -o BatchMode=yes -o ConnectTimeout=5 ec2-user@${INSTANCE_PUBLIC_NAME} echo ok 2>&1)
+#    sleep 2
+# done
+
+echo "Lets wait until our instance is definitely up and running"
+aws ec2 wait instance-running --instance-ids  ${INSTANCE_ID}
 
 echo "Starting SCP"
 
