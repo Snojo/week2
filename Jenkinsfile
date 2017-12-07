@@ -5,17 +5,17 @@ pipeline {
         checkout scm
         stage('Build') {
             steps {
-                npm run build
-                npm run clean
-                npm run startpostgres
+                sh 'npm install'
+                
+                sh 'npm run startpostgres && npm run startsever'
 
                 echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                npm run test
-                
+                sh 'npm run test'
+
                 echo 'Testing..'
             }
         }
