@@ -11,7 +11,7 @@ echo No instance information present, continuing.
 
 USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 
-SECURITY_GROUP_NAME=hgop3-${USERNAME}
+SECURITY_GROUP_NAME=hgop4-${USERNAME}
 
 echo "Using security group name ${SECURITY_GROUP_NAME}"
 
