@@ -30,7 +30,7 @@ node {
         //sh './provisioning/create-aws-docker-host-instance.sh'
         //sh './provisioniing/update-env.sh'
        // sh 'pwd'
-       sh 'cd ./provisioning && ./provision-new-environment.sh'
+       sh 'cd ./provisioning && ./create-new-aws-docker-host-instance.sh && ./deploy-on-instance'
        // sh 'pwd'
     }
 }
