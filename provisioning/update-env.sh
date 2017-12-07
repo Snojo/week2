@@ -2,10 +2,12 @@
 # Test machine 192.168.50.4
 set -e
 
-if [ -z "$GIT_COMMIT" ];
-then
-    export GIT_COMMIT='da2f19126787dd312a33f3178f397f5e2b6f55e1'
-fi
+# if [ -z "$GIT_COMMIT" ];
+# then
+#     export GIT_COMMIT='da2f19126787dd312a33f3178f397f5e2b6f55e1'
+# fi
+
+GIT_COMMIT=$(cat )
 
 INSTANCE_ID=$(cat ./ec2_instance/instance-id.txt)
 INSTANCE_PUBLIC_NAME=$(cat ./ec2_instance/instance-public-name.txt)
@@ -25,11 +27,11 @@ done
 
 echo "Status ${status}"
 
-sleep 10
 
 scp -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ./ec2-instance-check.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/ec2-instance-check.sh
 scp -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ./docker-compose.yaml ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose.yaml
 scp -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ./docker-compose-and-run.sh ec2-user@${INSTANCE_PUBLIC_NAME}:~/docker-compose-and-run.sh
+scp -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ./.env ec2-user@${INSTANCE_PUBLIC_NAME}:~/.env
 
 echo Wait for instance to be ready
 ssh -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/ec2-instance-check.sh"
@@ -38,6 +40,6 @@ echo Instance ready...going to run this:
 ssh -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "cat ~/docker-compose-and-run.sh"
 
 echo Running script
-ssh -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "~/docker-compose-and-run.sh ${GIT_COMMIT}"
+ssh -o StrictHostKeyChecking=no -i "./ec2_instance/${SECURITY_GROUP_NAME}.pem" ec2-user@${INSTANCE_PUBLIC_NAME} "~/docker-compose-and-run.sh"
 
 echo Done updating environment
