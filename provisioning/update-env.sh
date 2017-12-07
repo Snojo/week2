@@ -7,7 +7,7 @@ set -e
 #     export GIT_COMMIT='da2f19126787dd312a33f3178f397f5e2b6f55e1'
 # fi
 
-GIT_COMMIT=$(cat )
+#GIT_COMMIT=$(cat )
 
 INSTANCE_ID=$(cat ./ec2_instance/instance-id.txt)
 INSTANCE_PUBLIC_NAME=$(cat ./ec2_instance/instance-public-name.txt)
