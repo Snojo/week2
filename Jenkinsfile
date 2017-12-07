@@ -3,6 +3,7 @@ node {
     stage('Build') {
         echo 'Building..'
         //sh 'yarn install'
+        
         sh 'npm install'
         //sh 'npm run installclient'
     }
