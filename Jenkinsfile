@@ -9,7 +9,7 @@ node {
     }
     stage('Test') {
         echo 'Testing..'
-        sh 'npm run tests'
+        sh 'npm run test'
     }
     stage('Deploy') {
         echo 'Deploying....'
