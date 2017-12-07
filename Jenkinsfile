@@ -1,28 +1,15 @@
-pipeline {
-    agent any
-
-    stages {
-        checkout scm
-        stage('Build') {
-            steps {
-                sh 'npm install'
-                
-                sh 'npm run startpostgres && npm run startsever'
-
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm run test'
-
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+node {
+    checkout scm
+    stage('Build') {
+        echo 'Building..'
+        sh 'npm install'
+        sh 'npm run startpostgres && npm run startserver'
+    }
+    stage('Test') {
+        echo 'Testing..'
+        sh 'npm run test'
+    }
+    stage('Deploy') {
+        echo 'Deploying....'
     }
 }
