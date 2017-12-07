@@ -1,6 +1,6 @@
 node {
     checkout scm
-    env.NODEJS_HOME = "${tool 'Node 6.9'}"
+    env.NODEJS_HOME = "${tool 'Node 6.9.1'}"
     // on linux / mac
     env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
     stage('Build') {
