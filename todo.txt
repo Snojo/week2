@@ -1,0 +1,5 @@
+Making docker login automatically
+Making AWS login automatically
+moving the private key when creating a jenkins instance (so you don't need to do this every time...)
+Connect a hook between jenkins and git (Jenkins is too slow to allow for this right now)
+
