@@ -33,6 +33,7 @@ else
 fi
 
 MY_PUBLIC_IP=$(curl http://checkip.amazonaws.com) > ./ec2_instance/ec2_publicIP.txt
+MY_PRIVATE_IP=$(hostname -I | cut -d' ' -f1)
 if [ ! -e ./ec2_instance/instance-id.txt ]; then
     echo Create ec2 instance on security group ${SECURITY_GROUP_ID} ${AMI_IMAGE_ID}
     INSTANCE_INIT_SCRIPT=ec2-instance-init.sh
