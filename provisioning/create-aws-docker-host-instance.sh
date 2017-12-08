@@ -44,6 +44,16 @@ if [ ! -e ./ec2_instance/instance-id.txt ]; then
     echo aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
     aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
     echo EC2 instance ${INSTANCE_ID} ready and available on ${INSTANCE_PUBLIC_NAME}
+
+    MY_CIDR=${MY_PUBLIC_IP}/32
+    MY_P_CIDR=${MY_PRIVATE_IP}/32
+
+echo Using CIDR ${MY_CIDR} and PCIDR ${MY_P_CIDR} for access restrictions.
+
+set +e
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_P_CIDR}
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_CIDR}
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 8080 --cidr ${MY_CIDR}
 fi
 
 if [ ! -e ./ec2_instance/instance-public-name.txt ]; then
@@ -52,14 +62,6 @@ if [ ! -e ./ec2_instance/instance-public-name.txt ]; then
 fi
 
 
-MY_CIDR=${MY_PUBLIC_IP}/32
-MY_P_CIDR=${MY_PRIVATE_IP}/32
 
-echo Using CIDR ${MY_CIDR} and PCIDR ${MY_P_CIDR} for access restrictions.
-
-set +e
-aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_P_CIDR}
-aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_CIDR}
-aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 8080 --cidr ${MY_CIDR}
 
 
