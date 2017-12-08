@@ -4,7 +4,7 @@ set -e
 echo "Check for instance information..."
 INSTANCE_DIR="ec2_instance"
 
-if [ -e ./${INSTANCE_DIR}/instance-id.txt ]
+if [ -d "${INSTANCE_DIR}" ]
 then
     echo "Instance exists. Continue"
 else
