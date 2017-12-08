@@ -27,7 +27,7 @@ cd build
 echo Building docker image
 docker build -t tictactoe .
 
-docker tag -t tictactoe snojo/week2:$GIT_COMMIT
+docker tag tictactoe snojo/week2:$GIT_COMMIT
 
 rc=$?
 if [[ $rc != 0 ]] ; then
