@@ -4,7 +4,7 @@
 INSTANCE_ID=$(cat ./ec2_instance/instance-id.txt)
 INSTANCE_PUBLIC_NAME=$(cat ./ec2_instance/instance-public-name.txt)
 SECURITY_GROUP_NAME=$(cat ./ec2_instance/security-group-name.txt)
-
+MY_PRIVATE_IP=$(cat ./ec2_instance/private-ip,txt)
 #Lets make sure that we can connect to our instance.
 # status='unknown'
 # while [ ! "${status}" == "ok" ]

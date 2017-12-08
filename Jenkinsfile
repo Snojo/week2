@@ -8,10 +8,10 @@ node {
         sh 'node --version'
         sh 'yarn install'
        // sh 'npm install -g create-react-app'
-        sh 'npm cache clean -f'
+        //sh 'npm cache clean -f'
         //sh 'npm install'
         sh 'cd ./client && yarn install -d'
-        sh 'npm cache clean -f'
+        //sh 'npm cache clean -f'
     }
     stage('Test') {
         echo 'Testing..'

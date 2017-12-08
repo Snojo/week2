@@ -22,12 +22,16 @@ echo ${SECURITY_GROUP_ID} > ./ec2_instance/security-group-id.txt
 echo ${SECURITY_GROUP_NAME} > ./ec2_instance/security-group-name.txt
 #Knowing your IP is very useful. We use that to create an ip for us to use
 MY_PUBLIC_IP=$(curl http://checkip.amazonaws.com)
+MY_PRIVATE_IP=$(hostname -I | cut -d' ' -f1)
 echo "Security group has been created"
 
 MY_CIDR=${MY_PUBLIC_IP}/32
+MY_P_CIDR=${MY_PRIVATE_IP}/32 > ./ec2_instance/private-ip.txt
 #We're opening the HTTP and SSH ports here 
-aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_CIDR}
-aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_CIDR}
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_P_CIDR}
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_P_CIDR}
+aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 8080 --cidr ${MY_P_CIDR}
+
 
 echo "security group autorized"
 #Lets create the instance with all our previously optained info along with the image of the OS (The ami). We're also making sure that they init our os correctly with our instance-init script.
