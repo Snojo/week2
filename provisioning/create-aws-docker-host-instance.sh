@@ -55,7 +55,9 @@ else
     echo Using CIDR ${MY_CIDR} and PCIDR ${MY_P_CIDR} for access restrictions.
 
     set +e
-    aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_P_CIDR}
+    #aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_CIDR}
+
+    aws ec2 authorize-security-group-ingress --group-name jenkins-Admin --protocol tcp --port 22 --cidr ${MY_CIDR}
     aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 80 --cidr ${MY_CIDR}
     aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 8080 --cidr ${MY_CIDR}
     fi
