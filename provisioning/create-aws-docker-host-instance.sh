@@ -33,7 +33,7 @@ else
 fi
 
 MY_PUBLIC_IP=$(curl http://checkip.amazonaws.com) > ./ec2_instance/ec2_publicIP.txt
-MY_PRIVATE_IP=$(hostname -I | cut -d' ' -f1)
+MY_PRIVATE_IP=$(hostname -I | cut -d' ' -f1) >  ./ec2_instance/private-ip.txt
 if [ ! -e ./ec2_instance/instance-id.txt ]; then
     echo Create ec2 instance on security group ${SECURITY_GROUP_ID} ${AMI_IMAGE_ID}
     INSTANCE_INIT_SCRIPT=ec2-instance-init.sh
@@ -55,7 +55,7 @@ fi
 MY_CIDR=${MY_PUBLIC_IP}/32
 MY_P_CIDR=${MY_PRIVATE_IP}/32
 
-echo Using CIDR ${MY_CIDR} for access restrictions.
+echo Using CIDR ${MY_CIDR} and PCIDR ${MY_P_CIDR} for access restrictions.
 
 set +e
 aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --protocol tcp --port 22 --cidr ${MY_P_CIDR}

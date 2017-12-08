@@ -5,7 +5,7 @@ rm -rf ./dist
 
 
 if [ -z "$GIT_COMMIT" ]; then
-  #export GIT_COMMIT=$(git rev-parse HEAD)
+  export GIT_COMMIT=$(git rev-parse HEAD)
   export GIT_URL=$(git config --get remote.origin.url)
 fi
 GIT_COMMIT=$(git rev-parse HEAD) > ./provisioning/.env
