@@ -26,7 +26,7 @@ cd build
 
 echo Building docker image
 
-docker build -t snojo/tictactoe:$GIT_COMMIT .
+docker build -t tictactoe snojo/week2:$GIT_COMMIT .
 
 rc=$?
 if [[ $rc != 0 ]] ; then
@@ -34,7 +34,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-docker push snojo/tictactoe:$GIT_COMMIT
+docker push tictactoe snojo/week2:$GIT_COMMIT
 rc=$?
 if [[ $rc != 0 ]] ; then
    echo "Docker push failed " $rc
