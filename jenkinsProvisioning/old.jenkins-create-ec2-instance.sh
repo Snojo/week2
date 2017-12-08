@@ -29,11 +29,11 @@ fi
 if [ ! -e ./ec2_instance/instance-id.txt ]; then
     JBOOTSTRAP=${THISDIR}/jenkins-bootstrap.sh
     echo "Creating Jenkins Instance"
-    create-ec2-instance ami-15e9c770  ${JBOOTSTRAP} ${PEM_NAME}
+    create-ec2-instance ami-e7d6c983  ${JBOOTSTRAP} ${PEM_NAME}
     echo "Instance Created"
 fi
 #Template: ami-1a962263 
-#Last one I used:  ami-15e9c770
+#Last one I used:  ami-e7d6c983
 
 authorize-access ${JENKINS_SECURITY_GROUP}
 echo "Access Authorized"

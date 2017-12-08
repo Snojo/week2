@@ -35,12 +35,12 @@ aws ec2 authorize-security-group-ingress --group-name ${SECURITY_GROUP_NAME} --p
 
 echo "security group autorized"
 #Lets create the instance with all our previously optained info along with the image of the OS (The ami). We're also making sure that they init our os correctly with our instance-init script.
-INSTANCE_ID=$(aws ec2 run-instances --user-data file://ec2-instance-init.sh --image-id ami-15e9c770 --security-group-ids ${SECURITY_GROUP_ID} --count 1 --instance-type t2.micro --key-name ${SECURITY_GROUP_NAME} --query 'Instances[0].InstanceId'  --output=text)
+INSTANCE_ID=$(aws ec2 run-instances --user-data file://ec2-instance-init.sh --image-id ami-e7d6c983 --security-group-ids ${SECURITY_GROUP_ID} --count 1 --instance-type t2.micro --key-name ${SECURITY_GROUP_NAME} --query 'Instances[0].InstanceId'  --output=text)
 #Now lets save that instance id for later use
 echo ${INSTANCE_ID} > ./ec2_instance/instance-id.txt
 echo "I'm not hanging. I'm just warming up. Stay chill :-) "
 #Lets wait until our instance instantiates 
-aws ec2 wait --region us-east-2 instance-running --instance-ids ${INSTANCE_ID}
+aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
 echo "Done warming up. Lets GO!"
 #Lets make sure that we know our instance public dns so we can actually do something with it.
 export INSTANCE_PUBLIC_NAME=$(aws ec2 describe-instances --instance-ids ${INSTANCE_ID} --query "Reservations[*].Instances[*].PublicDnsName" --output=text)

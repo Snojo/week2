@@ -9,7 +9,7 @@ SECURITY_GROUP_NAME=$(cat ./ec2_instance/security-group-name.txt)
 aws ec2 terminate-instances --instance-ids ${INSTANCE_ID}
 
 #Wait until the instance is dead
-aws ec2 wait --region us-east-2 instance-terminated --instance-ids ${INSTANCE_ID}
+aws ec2 wait --region eu-west-2 instance-terminated --instance-ids ${INSTANCE_ID}
 #Delete the security group
 aws ec2 delete-security-group --group-id ${SECURITY_GROUP_ID}
 #Delete the ssh key pair

@@ -11,7 +11,7 @@ USERNAME=$(aws iam get-user --query 'User.UserName' --output text)
 if [ -e "./ec2_instance/instance-id.txt" ]; then
     aws ec2 terminate-instances --instance-ids ${INSTANCE_ID}
 
-    aws ec2 wait --region us-east-2 instance-terminated --instance-ids ${INSTANCE_ID}
+    aws ec2 wait --region eu-west-2 instance-terminated --instance-ids ${INSTANCE_ID}
 
     rm ./ec2_instance/instance-id.txt
     rm ./ec2_instance/instance-public-name.txt

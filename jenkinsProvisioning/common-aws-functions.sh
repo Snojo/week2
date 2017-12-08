@@ -52,8 +52,8 @@ function create-ec2-instance(){
         INSTANCE_ID=$(aws ec2 run-instances  --user-data file://jenkins-bootstrap.sh --image-id ${AMI_IMAGE_ID} --security-group-ids ${SECURITY_GROUP_ID} --count 1 --instance-type t2.micro --key-name ${PEM_NAME}.pem --query 'Instances[0].InstanceId'  --output=text)
         echo ${INSTANCE_ID} > ./ec2_instance/instance-id.txt
 
-        echo aws ec2 wait --region us-east-2 instance-running --instance-ids ${INSTANCE_ID}
-        aws ec2 wait --region us-east-2 instance-running --instance-ids ${INSTANCE_ID}
+        echo aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
+        aws ec2 wait --region eu-west-2 instance-running --instance-ids ${INSTANCE_ID}
         export INSTANCE_PUBLIC_NAME=$(aws ec2 describe-instances --instance-ids ${INSTANCE_ID} --query "Reservations[*].Instances[*].PublicDnsName" --output=text)
     fi
 
