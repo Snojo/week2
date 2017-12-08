@@ -37,7 +37,7 @@ set -e
 
 echo "security group autorized"
 #Lets create the instance with all our previously optained info along with the image of the OS (The ami). We're also making sure that they init our os correctly with our instance-init script.
-INSTANCE_ID=$(aws ec2 run-instances --user-data file://jenkins-bootstrap.sh --image-id ami-15e9c770 --security-group-ids ${SECURITY_GROUP_ID} --count 1 --instance-type t2.micro --key-name ${SECURITY_GROUP_NAME} --query 'Instances[0].InstanceId'  --output=text)
+INSTANCE_ID=$(aws ec2 run-instances --user-data file://./jenkins-bootstrap.sh --image-id ami-15e9c770 --security-group-ids ${SECURITY_GROUP_ID} --count 1 --instance-type t2.micro --key-name ${SECURITY_GROUP_NAME} --query 'Instances[0].InstanceId'  --output=text)
 #Now lets save that instance id for later use
 echo ${INSTANCE_ID} > ./ec2_instance/instance-id.txt
 echo "I'm not hanging. I'm just warming up. Stay chill :-) "
