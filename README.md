@@ -1,3 +1,20 @@
+# README
+I have some things to say... 
+The AWS instances that we have available are horrible. They keep running out of memory and failing randomly.
+For some reason I keep losing access to my Jenkins instance. I've made sure that they're not killing me for pushing my .pem files on github, blocking my .pem. I was doing that accidentally... for a bit... but that's definitely not the current problem. 
+I can't ssh, I can't ping. It's like the instance doesn't exist anymore, even if it shows as running on AWS console. 
+I really don't know what to do. 
+I've set up Jenkins a total of 7 times now... 
+That and the problems with memory and the bad scripts we've been given, has taken so much time from us that there is no time for the unit testing phase. 
+The project that we were given was supposed to be more or less ready for deployment, yet I've spent the better part of this week just to try to deploy it through Jenkins. (it deploys locally)
+I think most of us have been struggling with this for days now without much progress. Just knocking our heads against a wall for hours and hours. 
+The few that have actually managed to do this really can't tell us how... Because they don't know.
+
+
+
+
+
+
 ## Application for HGOP 2017 Student project
 
 Global installation requirements:
